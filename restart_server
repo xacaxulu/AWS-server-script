@@ -1,0 +1,8 @@
+#!/bin/bash
+ps -ef | grep search_server.rb | grep ruby | awk '{ print $2 }' | xargs kill -9
+ps -ef | grep webkit_server | grep ruby | awk '{ print $2 }' | xargs kill -9
+cd ~/search
+export DISPLAY=:1
+nohup ruby search_server.rb > server_new2.log &
+tail -f server_new2.log
+
